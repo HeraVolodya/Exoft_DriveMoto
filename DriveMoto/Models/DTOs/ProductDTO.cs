@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DriveMoto.Models
+namespace DriveMoto.Models.DTOs
 {
-    public class UpdateProductRequest
+    public class ProductDTO
     {
-        [Required] //атрибут [Required] вказує на те що поля повині бути
-                   //обовязково заповненими
+        [Required]
         public string? Name { get; set; }
         [Required]
         public string ImageURL { get; set; }

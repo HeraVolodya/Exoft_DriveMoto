@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DriveMoto.Models
+namespace DriveMoto.Models.AddRequest
 {
     public class AddClientRequest
     {

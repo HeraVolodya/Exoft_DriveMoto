@@ -6,29 +6,30 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Net.Security;
 using AutoMapper;
+using DriveMoto.Models.DTOs;
+using DriveMoto.Models.AddRequest;
+using DriveMoto.Models.UpdateRequests;
 
 namespace DriveMoto.Controllers
 {
     [ApiController]
-    [Route("/api/[controller]")] //слово api можна замінти, воно буде відображатися в пошуковій срічці браузерв
-                                 // а замість слова [controller] буде підставлятися назва контролера, в даному випадку Client
+    [Route("/api/[controller]")] 
+
     public class ClientController : Controller
     {
         private readonly APIDbContext dbClients;
         private readonly IMapper _mapper;
-
-        //ClientRepository clientRepository = new 
 
         public ClientController(APIDbContext dbClients, IMapper mapper)
         {
             this.dbClients = dbClients;
             _mapper = mapper;
         }
-        //отримання всього списку клієнтів
+        
         [HttpGet]
         public async Task<IActionResult> GetClients() => Ok(await dbClients.Clients.ToListAsync());
         
-        //додавання нового клієнтв
+        
         [HttpPost]
         public async Task<IActionResult> AddClient(AddClientRequest addClientRequest)
         {
@@ -55,7 +56,7 @@ namespace DriveMoto.Controllers
             }
 
         }
-        //редагування клієнта
+        
         [HttpPut]
         [Route("{id:guid}")]
         public async Task<IActionResult> UpdateCliaent([FromRoute] Guid id, DateTimeOffset datatime, UpdateClientRequest updateClientRequest)

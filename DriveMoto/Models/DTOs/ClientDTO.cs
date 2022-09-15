@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DriveMoto.Models
+namespace DriveMoto.Models.DTOs
 {
-    public class UpdateClientRequest
+    public class ClientDTO
     {
         [Required]
         public string? FirstName { get; set; }
