@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DriveMoto", "DriveMoto\DriveMoto.csproj", "{FF9E5D01-CD8E-437A-AFB6-BEA7C98FA16E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF9E5D01-CD8E-437A-AFB6-BEA7C98FA16E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF9E5D01-CD8E-437A-AFB6-BEA7C98FA16E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF9E5D01-CD8E-437A-AFB6-BEA7C98FA16E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF9E5D01-CD8E-437A-AFB6-BEA7C98FA16E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {334309F8-5B20-4550-AB73-DE93EFA6FD89}
+	EndGlobalSection
+EndGlobal

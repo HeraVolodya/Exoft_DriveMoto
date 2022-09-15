@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\DriveMoto",
+    "\\DriveMoto\\Controllers",
+    "\\DriveMoto\\DataBase",
+    "\\DriveMoto\\Migrations",
+    "\\DriveMoto\\Models"
+  ],
+  "SelectedNode": "\\DriveMoto\\Controllers\\ProductController.cs",
+  "PreviewInSolutionExplorer": false
+}
