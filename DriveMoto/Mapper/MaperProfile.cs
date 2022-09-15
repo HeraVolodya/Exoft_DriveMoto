@@ -1,6 +1,7 @@
 ﻿using DriveMoto.Models;
 using System.Security.Claims;
 using AutoMapper;
+using DriveMoto.Models.DTOs;
 
 namespace DriveMoto.Mapper
 {

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using DriveMoto.DataBase;
 using DriveMoto.Models;
+using DriveMoto.Models.AddRequest;
+using DriveMoto.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DriveMoto.Repository

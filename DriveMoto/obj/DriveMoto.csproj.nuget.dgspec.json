@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\backend\\projects\\DriveMotoRepo\\Exoft_DriveMoto\\DriveMoto\\DriveMoto.csproj": {}
+    "D:\\backend\\projects\\DriveMotoRepository\\Exoft_DriveMoto\\DriveMoto\\DriveMoto.csproj": {}
   },
   "projects": {
-    "D:\\backend\\projects\\DriveMotoRepo\\Exoft_DriveMoto\\DriveMoto\\DriveMoto.csproj": {
+    "D:\\backend\\projects\\DriveMotoRepository\\Exoft_DriveMoto\\DriveMoto\\DriveMoto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\backend\\projects\\DriveMotoRepo\\Exoft_DriveMoto\\DriveMoto\\DriveMoto.csproj",
+        "projectUniqueName": "D:\\backend\\projects\\DriveMotoRepository\\Exoft_DriveMoto\\DriveMoto\\DriveMoto.csproj",
         "projectName": "DriveMoto",
-        "projectPath": "D:\\backend\\projects\\DriveMotoRepo\\Exoft_DriveMoto\\DriveMoto\\DriveMoto.csproj",
+        "projectPath": "D:\\backend\\projects\\DriveMotoRepository\\Exoft_DriveMoto\\DriveMoto\\DriveMoto.csproj",
         "packagesPath": "C:\\Users\\herav\\.nuget\\packages\\",
-        "outputPath": "D:\\backend\\projects\\DriveMotoRepo\\Exoft_DriveMoto\\DriveMoto\\obj\\",
+        "outputPath": "D:\\backend\\projects\\DriveMotoRepository\\Exoft_DriveMoto\\DriveMoto\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

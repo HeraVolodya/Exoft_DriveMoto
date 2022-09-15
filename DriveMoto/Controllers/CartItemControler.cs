@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Net.Security;
 using AutoMapper;
+using DriveMoto.Models.DTOs;
+using DriveMoto.Models.AddRequest;
 
 namespace DriveMoto.Controllers
 {
@@ -26,7 +28,6 @@ namespace DriveMoto.Controllers
         public async Task<IActionResult> GetCartItem() => Ok(await _dbCartItems.CartItems.ToListAsync());
 
         [HttpPost]
-        
         public async Task<IActionResult> AddCarItem(
             [FromBody] AddCartItemRequest addCartItemRequest)
         {

@@ -6,12 +6,15 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Net.Security;
 using AutoMapper;
+using DriveMoto.Models.DTOs;
+using DriveMoto.Models.AddRequest;
+using DriveMoto.Models.UpdateRequests;
 
 namespace DriveMoto.Controllers
 {
     [ApiController]
-    [Route("/api/[controller]")] //слово api можна замінти, воно буде відображатися в пошуковій срічці браузерв
-                                 // а замість слова [controller] буде підставлятися назва контролера, в даному випадку Produkts
+    [Route("/api/[controller]")] 
+
     public class ProductController : Controller
     {
         private readonly APIDbContext _dbProducts;
@@ -23,11 +26,10 @@ namespace DriveMoto.Controllers
             _mapper = mapper;
         }
 
-        //отримання вього списку товарив
-        //отримання всього списку клієнтів  
+         
         [HttpGet]
         public async Task<IActionResult> GetProducts() => Ok(await _dbProducts.Products.ToListAsync());
-        //додавання нового продукту
+        
         [HttpPost]
         public async Task<IActionResult> AddProduct(AddProductRequest addProductRequest)
         {
@@ -53,7 +55,7 @@ namespace DriveMoto.Controllers
                 return BadRequest(e.Message);
             }
         }
-        //редагування продукту
+        
         [HttpPut]
         [Route("{id:guid}")]
         public async Task<IActionResult> UpdateProduct([FromRoute] Guid id, UpdateProductRequest updateProductRequest)
@@ -81,7 +83,7 @@ namespace DriveMoto.Controllers
             }
 
         }
-        //видалення продукту
+        
         [HttpDelete]
         [Route("{id:guid}")]
         public async Task<IActionResult> DeleteЗкщвгсе([FromRoute] Guid id)

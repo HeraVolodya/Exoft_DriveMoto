@@ -1,16 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DriveMoto.Models
+namespace DriveMoto.Models.AddRequest
 {
-    public class CartItemDTO
+    public class AddCartItemRequest
     {
         [Required]
         public Guid CleantId { get; set; }
         [Required]
         public Guid ProductId { get; set; }
-
-        public ClientDTO? Client { get; set; }
-
-        public ProductDTO? Product { get; set; }
     }
 }
