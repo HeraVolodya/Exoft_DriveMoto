@@ -1,9 +1,13 @@
 ﻿using DriveMoto.Models;
+using DriveMoto.Models.DTOs;
+using DriveMoto.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DriveMoto.DataBase
 {
-    public class APIDbContext : DbContext
+    public class APIDbContext : IdentityDbContext<User>
     {
         public APIDbContext(DbContextOptions options) : base(options)
         {
@@ -12,6 +16,7 @@ namespace DriveMoto.DataBase
         public DbSet<Client> Clients { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,14 +38,4 @@ namespace DriveMoto.DataBase
 
     }
 
-    //зробити наступним чином
-    //public class APIDbContext : DbContext
-    //{
-    //    public APIDbContext(DbContextOptions options) : base(options)
-    //    {
-
-    //    }
-    //    public DbSet<Client> Clients { get; set; }
-    //    public DbSet<Product> Products { get; set; }
-    //}
 }
