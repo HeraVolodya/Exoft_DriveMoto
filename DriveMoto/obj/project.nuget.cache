@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IL1HK4LUACuLPCHIhKp3qqgg+gjm6W0CPnml5Xktjsvg9OmYcqoRlZ1Yui13+GXMaaxlqxIJTojmGUFg9C5KsA==",
+  "dgSpecHash": "WCby167JwTlIZ7oek1UGr4htjFDz25QiH3IkCM7Zob0e4YCTiRDpfVG20pkQudwVlyE4dfVNTKs64+kbVKE8hw==",
   "success": true,
   "projectFilePath": "D:\\backend\\projects\\DriveMotoRepository\\Exoft_DriveMoto\\DriveMoto\\DriveMoto.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,9 @@
     "C:\\Users\\herav\\.nuget\\packages\\azure.core\\1.20.0\\azure.core.1.20.0.nupkg.sha512",
     "C:\\Users\\herav\\.nuget\\packages\\azure.identity\\1.5.0\\azure.identity.1.5.0.nupkg.sha512",
     "C:\\Users\\herav\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\herav\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.9\\microsoft.aspnetcore.cryptography.internal.6.0.9.nupkg.sha512",
+    "C:\\Users\\herav\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.9\\microsoft.aspnetcore.cryptography.keyderivation.6.0.9.nupkg.sha512",
+    "C:\\Users\\herav\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.9\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.9.nupkg.sha512",
     "C:\\Users\\herav\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.0.0\\microsoft.bcl.asyncinterfaces.1.0.0.nupkg.sha512",
     "C:\\Users\\herav\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\herav\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.0-preview2.22096.2\\microsoft.data.sqlclient.5.0.0-preview2.22096.2.nupkg.sha512",
@@ -27,6 +30,8 @@
     "C:\\Users\\herav\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0-preview.7.22375.6\\microsoft.extensions.configuration.abstractions.7.0.0-preview.7.22375.6.nupkg.sha512",
     "C:\\Users\\herav\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0-preview.7.22375.6\\microsoft.extensions.dependencyinjection.7.0.0-preview.7.22375.6.nupkg.sha512",
     "C:\\Users\\herav\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0-preview.7.22375.6\\microsoft.extensions.dependencyinjection.abstractions.7.0.0-preview.7.22375.6.nupkg.sha512",
+    "C:\\Users\\herav\\.nuget\\packages\\microsoft.extensions.identity.core\\6.0.9\\microsoft.extensions.identity.core.6.0.9.nupkg.sha512",
+    "C:\\Users\\herav\\.nuget\\packages\\microsoft.extensions.identity.stores\\6.0.9\\microsoft.extensions.identity.stores.6.0.9.nupkg.sha512",
     "C:\\Users\\herav\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0-preview.7.22375.6\\microsoft.extensions.logging.7.0.0-preview.7.22375.6.nupkg.sha512",
     "C:\\Users\\herav\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0-preview.7.22375.6\\microsoft.extensions.logging.abstractions.7.0.0-preview.7.22375.6.nupkg.sha512",
     "C:\\Users\\herav\\.nuget\\packages\\microsoft.extensions.options\\7.0.0-preview.7.22375.6\\microsoft.extensions.options.7.0.0-preview.7.22375.6.nupkg.sha512",

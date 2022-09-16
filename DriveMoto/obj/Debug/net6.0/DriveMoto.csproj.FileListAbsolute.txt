@@ -549,3 +549,8 @@ D:\backend\projects\DriveMotoRepository\Exoft_DriveMoto\DriveMoto\obj\Debug\net6
 D:\backend\projects\DriveMotoRepository\Exoft_DriveMoto\DriveMoto\obj\Debug\net6.0\DriveMoto.pdb
 D:\backend\projects\DriveMotoRepository\Exoft_DriveMoto\DriveMoto\obj\Debug\net6.0\DriveMoto.genruntimeconfig.cache
 D:\backend\projects\DriveMotoRepository\Exoft_DriveMoto\DriveMoto\obj\Debug\net6.0\ref\DriveMoto.dll
+D:\backend\projects\DriveMotoRepository\Exoft_DriveMoto\DriveMoto\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\backend\projects\DriveMotoRepository\Exoft_DriveMoto\DriveMoto\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\backend\projects\DriveMotoRepository\Exoft_DriveMoto\DriveMoto\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\backend\projects\DriveMotoRepository\Exoft_DriveMoto\DriveMoto\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+D:\backend\projects\DriveMotoRepository\Exoft_DriveMoto\DriveMoto\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
