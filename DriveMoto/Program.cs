@@ -1,11 +1,21 @@
 
 using DriveMoto.DataBase;
+using DriveMoto.Models;
+using DriveMoto.Models.DTOs;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder();
  
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
- 
+builder.Services.AddDbContext<APIDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("ClientsApiConnectionString")));
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+    options.User.RequireUniqueEmail = false;
+})
+    .AddEntityFrameworkStores<APIDbContext>();
+    //.AddDefaultTokenProviders();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -15,8 +25,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 //builder.Services.AddDbContext<ClientsAPIDbContext>(options => options.UseInMemoryDatabase("ClientsDb"));
-builder.Services.AddDbContext<APIDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("ClientsApiConnectionString")));
 
 var app = builder.Build();
 
