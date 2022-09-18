@@ -26,31 +26,40 @@ namespace DriveMoto.Controllers
         [HttpGet]
         public async Task<IActionResult> Get() => Ok(await _userManager.Users.ToListAsync());
 
+        //REGISTRATION
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                User user = new User {UserName = model.UserName, FirstName = model.FirstName, LastName = model.LastName, Phone = model.Phone ,Email = model.Email };
-                // добавляем пользователя
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                if (ModelState.IsValid)
                 {
-                    // установка куки
-                    await _signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
+                    User user = new User { UserName = model.UserName, FirstName = model.FirstName, LastName = model.LastName, Phone = model.Phone, Email = model.Email };
+                    // add user
+                    var result = await _userManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
                     {
-                        ModelState.AddModelError(string.Empty, error.Description);
+                        // установка куки
+                        await _signInManager.SignInAsync(user, false);
+                        return RedirectToAction("Index", "Home");
                     }
-                    return Ok("Eror");
+                    else
+                    {
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
+                        return Ok();
+                    }
                 }
+
+                return Ok(model);
             }
-            
-            return Ok(model);
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }
+
