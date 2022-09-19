@@ -30,7 +30,7 @@ namespace DriveMoto.Controllers
 
         [HttpPost]
         public async Task<IActionResult> AddCarItem(
-            [FromBody] AddCartItemRequest addCartItemRequest)
+        [FromBody] AddCartItemRequest addCartItemRequest)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace DriveMoto.Controllers
             }
 
         }
-        //delete purchase
+        
         [HttpDelete("{id:Guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {

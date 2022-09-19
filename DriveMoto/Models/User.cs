@@ -13,5 +13,7 @@ namespace DriveMoto.Models
         public string? Email { get; set; }
 
         public List<CartItem>? CartItems { get; set; }
+
+        public List<Favorite>? Favorites { get; set; }
     }
 }
