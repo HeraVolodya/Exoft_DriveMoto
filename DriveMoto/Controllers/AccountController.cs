@@ -64,44 +64,67 @@ namespace DriveMoto.Controllers
         [HttpGet("login")]
         public IActionResult Login(string? returnUrl = null)
         {
-            return Ok(new LoginViewModel { ReturnUrl = returnUrl });
+            try
+            {
+                return Ok(new LoginViewModel { ReturnUrl = returnUrl });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost("login")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var result =
-                    await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
-                if (result.Succeeded)
+                if (ModelState.IsValid)
                 {
-                    // проверяем, принадлежит ли URL приложению
-                    if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+                    var result =
+                        await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                    if (result.Succeeded)
                     {
-                        return Ok(model.ReturnUrl);
+                        // проверяем, принадлежит ли URL приложению
+                        if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+                        {
+                            return Ok(model.ReturnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        ModelState.AddModelError("", "Wrong username and/or password");
                     }
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Wrong username and/or password");
-                }
+                return Ok(model);
             }
-            return Ok(model);
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
 
         [HttpPost("logout")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
-            // delete authentication cookies
-            await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            try
+            {
+                // delete authentication cookies
+                await _signInManager.SignOutAsync();
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
         }
     }
 }
