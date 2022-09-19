@@ -24,5 +24,7 @@ namespace DriveMoto.Models
         public double Discount { get; set; }
 
         public List<CartItem>? CartItems { get; set; }
+
+        public List<Favorite>? Favorites { get; set; }
     }
 }

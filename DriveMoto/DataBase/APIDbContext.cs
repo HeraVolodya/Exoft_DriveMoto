@@ -13,10 +13,10 @@ namespace DriveMoto.DataBase
         {
 
         }
-        //public DbSet<Client> Clients { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
-        
+        public DbSet<Favorite> Favorites { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -33,8 +33,22 @@ namespace DriveMoto.DataBase
                      .HasForeignKey(t => t.ProductId)
                      .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Favorite>()
+                    .HasOne(t => t.User)
+                    .WithMany(t => t.Favorites)
+                    .HasForeignKey(t => t.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Favorite>()
+                     .HasOne(t => t.Product)
+                     .WithMany(t => t.Favorites)
+                     .HasForeignKey(t => t.ProductId)
+                     .OnDelete(DeleteBehavior.Cascade);
+
             base.OnModelCreating(modelBuilder);
         }
+
+
 
 
     }

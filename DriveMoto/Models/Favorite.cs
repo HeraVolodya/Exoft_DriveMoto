@@ -2,7 +2,7 @@
 
 namespace DriveMoto.Models
 {
-    public class CartItem
+    public class Favorite
     {
         [Required]
         public Guid Id { get; set; }
@@ -14,7 +14,7 @@ namespace DriveMoto.Models
         public Guid ProductId { get; set; }
 
         public User? User { get; set; }
-        
+
         public Product? Product { get; set; }
     }
 }
