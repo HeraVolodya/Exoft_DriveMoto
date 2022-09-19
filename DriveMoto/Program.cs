@@ -4,6 +4,7 @@ using DriveMoto.Models;
 using DriveMoto.Models.DTOs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder();
  
