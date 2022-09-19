@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DriveMoto.Migrations
 {
     [DbContext(typeof(APIDbContext))]
-    [Migration("20220918123419_loginDelteUrl")]
-    partial class loginDelteUrl
+    [Migration("20220919140407_pojectDW")]
+    partial class pojectDW
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,54 +31,23 @@ namespace DriveMoto.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CleantId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTimeOffset>("DataTime")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CleantId");
+                    b.HasIndex("Email");
 
                     b.HasIndex("ProductId");
 
                     b.ToTable("CartItems");
-                });
-
-            modelBuilder.Entity("DriveMoto.Models.Client", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTimeOffset>("DataTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Phone")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("DriveMoto.Models.Product", b =>
@@ -325,9 +294,9 @@ namespace DriveMoto.Migrations
 
             modelBuilder.Entity("DriveMoto.Models.CartItem", b =>
                 {
-                    b.HasOne("DriveMoto.Models.Client", "Client")
+                    b.HasOne("DriveMoto.Models.User", "User")
                         .WithMany("CartItems")
-                        .HasForeignKey("CleantId")
+                        .HasForeignKey("Email")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -337,9 +306,9 @@ namespace DriveMoto.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Client");
-
                     b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -393,12 +362,12 @@ namespace DriveMoto.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DriveMoto.Models.Client", b =>
+            modelBuilder.Entity("DriveMoto.Models.Product", b =>
                 {
                     b.Navigation("CartItems");
                 });
 
-            modelBuilder.Entity("DriveMoto.Models.Product", b =>
+            modelBuilder.Entity("DriveMoto.Models.User", b =>
                 {
                     b.Navigation("CartItems");
                 });

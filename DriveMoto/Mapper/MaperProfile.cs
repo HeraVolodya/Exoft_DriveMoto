@@ -10,11 +10,11 @@ namespace DriveMoto.Mapper
         public MaperProfile()
         {
             CreateMap<User, UserDTO>().ReverseMap();
-            CreateMap<Client, ClientDTO>().ReverseMap();
+            //CreateMap<Client, ClientDTO>().ReverseMap();
             CreateMap<Product, ProductDTO>().ReverseMap();
             CreateMap<CartItem, CartItemDTO>()
                 .ForMember(t => t.Product, t => t.MapFrom(x => x.Product))
-                .ForMember(t => t.Client, t => t.MapFrom(x => x.Client))
+                .ForMember(t => t.User, t => t.MapFrom(x => x.User))
                 .ReverseMap();
         }
     }

@@ -19,6 +19,7 @@ namespace DriveMoto.Controllers
         private readonly APIDbContext _dbCartItems;
         private readonly IMapper _mapper;
 
+
         public CartItemControler(APIDbContext dbCartItems, IMapper mapper)
         {
             _dbCartItems = dbCartItems;
@@ -36,7 +37,7 @@ namespace DriveMoto.Controllers
                 var cartItem = new CartItem()
                 {
                     Id = Guid.NewGuid(),
-                    CleantId = addCartItemRequest.CleantId,
+                    UserId = addCartItemRequest.UserId,
                     ProductId = addCartItemRequest.ProductId
 
                 };

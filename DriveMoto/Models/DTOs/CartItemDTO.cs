@@ -4,12 +4,11 @@ namespace DriveMoto.Models.DTOs
 {
     public class CartItemDTO
     {
-        [Required]
-        public Guid CleantId { get; set; }
-        [Required]
+        public string? UserId { get; set; }
+
         public Guid ProductId { get; set; }
 
-        public ClientDTO? Client { get; set; }
+        public UserDTO? User { get; set; }
 
         public ProductDTO? Product { get; set; }
     }
