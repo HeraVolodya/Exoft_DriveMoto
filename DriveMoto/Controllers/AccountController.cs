@@ -15,7 +15,7 @@ namespace DriveMoto.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        
+
 
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
@@ -103,11 +103,10 @@ namespace DriveMoto.Controllers
                 }
                 return Ok(model);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-            
         }
 
         [HttpPost("logout")]
@@ -124,7 +123,57 @@ namespace DriveMoto.Controllers
             {
                 return BadRequest(e.Message);
             }
+        }
 
+
+
+        [HttpGet("changePassword")]
+        public async Task<IActionResult> ChangePassword(string id)
+        {
+            User user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            ChangePasswordViewModel model = new ChangePasswordViewModel { Id = user.Id, Email = user.Email };
+            return Ok(model);
+        }
+
+        [HttpPost("ChangePassword")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = await _userManager.FindByIdAsync(model.Id);
+                if (user != null)
+                {
+                    var _passwordValidator =
+                        HttpContext.RequestServices.GetService(typeof(IPasswordValidator<User>)) as IPasswordValidator<User>;
+                    var _passwordHasher =
+                        HttpContext.RequestServices.GetService(typeof(IPasswordHasher<User>)) as IPasswordHasher<User>;
+
+                    IdentityResult result =
+                        await _passwordValidator.ValidateAsync(_userManager, user, model.NewPassword);
+                    if (result.Succeeded)
+                    {
+                        user.PasswordHash = _passwordHasher.HashPassword(user, model.NewPassword);
+                        await _userManager.UpdateAsync(user);
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Пользователь не найден");
+                }
+            }
+            return Ok(model);
         }
     }
 }

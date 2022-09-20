@@ -86,7 +86,7 @@ namespace DriveMoto.Controllers
         
         [HttpDelete]
         [Route("{id:guid}")]
-        public async Task<IActionResult> DeleteЗкщвгсе([FromRoute] Guid id)
+        public async Task<IActionResult> DeleteProduct([FromRoute] Guid id)
         {
             try
             {
