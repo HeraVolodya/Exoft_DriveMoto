@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WCby167JwTlIZ7oek1UGr4htjFDz25QiH3IkCM7Zob0e4YCTiRDpfVG20pkQudwVlyE4dfVNTKs64+kbVKE8hw==",
+  "dgSpecHash": "OBXAQ5gEAza+YSpAvD7huPhdoe1xJVOfnwRl1vGv7w4ktUoNSDqV/CocfWLIztvvyryXA2WAManNdziDA7BCqQ==",
   "success": true,
-  "projectFilePath": "D:\\backend\\projects\\DriveMotoRepository\\Exoft_DriveMoto\\DriveMoto\\DriveMoto.csproj",
+  "projectFilePath": "D:\\backend\\projects\\DriveMotoRepository\\Exoft_DriveMoto_backend\\DriveMoto\\DriveMoto.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\herav\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\herav\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
