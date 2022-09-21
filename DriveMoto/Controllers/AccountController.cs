@@ -41,6 +41,7 @@ namespace DriveMoto.Controllers
                     {
                         // установка куки
                         await _signInManager.SignInAsync(user, false);
+                        await _userManager.GenerateUserTokenAsync(user, "default", "asd");
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -49,7 +50,7 @@ namespace DriveMoto.Controllers
                         {
                             ModelState.AddModelError(string.Empty, error.Description);
                         }
-                        return Ok();
+                        return BadRequest(result.Errors);
                     }
                 }
 
@@ -75,7 +76,7 @@ namespace DriveMoto.Controllers
         }
 
         [HttpPost("login")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             try
@@ -83,22 +84,22 @@ namespace DriveMoto.Controllers
                 if (ModelState.IsValid)
                 {
                     var result =
-                        await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                        await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, false);
                     if (result.Succeeded)
                     {
                         // проверяем, принадлежит ли URL приложению
                         if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                         {
-                            return Ok(model.ReturnUrl);
+                            return BadRequest();
                         }
                         else
                         {
-                            return RedirectToAction("Index", "Home");
+                            return Ok(model.ReturnUrl);
                         }
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Wrong username and/or password");
+                        return BadRequest("Invalid username or password");
                     }
                 }
                 return Ok(model);
@@ -125,55 +126,68 @@ namespace DriveMoto.Controllers
             }
         }
 
-
-
+        //ChangePassword:
         [HttpGet("changePassword")]
         public async Task<IActionResult> ChangePassword(string id)
         {
             User user = await _userManager.FindByIdAsync(id);
-            if (user == null)
+            try
             {
-                return NotFound();
+                if (user == null)
+                {
+                    return NotFound();
+                }
+                ChangePasswordViewModel model = new ChangePasswordViewModel { Id = user.Id, Email = user.Email };
+                return Ok(model);
             }
-            ChangePasswordViewModel model = new ChangePasswordViewModel { Id = user.Id, Email = user.Email };
-            return Ok(model);
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost("ChangePassword")]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                User user = await _userManager.FindByIdAsync(model.Id);
-                if (user != null)
+                if (ModelState.IsValid)
                 {
-                    var _passwordValidator =
-                        HttpContext.RequestServices.GetService(typeof(IPasswordValidator<User>)) as IPasswordValidator<User>;
-                    var _passwordHasher =
-                        HttpContext.RequestServices.GetService(typeof(IPasswordHasher<User>)) as IPasswordHasher<User>;
-
-                    IdentityResult result =
-                        await _passwordValidator.ValidateAsync(_userManager, user, model.NewPassword);
-                    if (result.Succeeded)
+                    User user = await _userManager.FindByIdAsync(model.Id);
+                    if (user != null)
                     {
-                        user.PasswordHash = _passwordHasher.HashPassword(user, model.NewPassword);
-                        await _userManager.UpdateAsync(user);
-                        return RedirectToAction("Index");
+                        var _passwordValidator =
+                            HttpContext.RequestServices.GetService(typeof(IPasswordValidator<User>)) as IPasswordValidator<User>;
+                        var _passwordHasher =
+                            HttpContext.RequestServices.GetService(typeof(IPasswordHasher<User>)) as IPasswordHasher<User>;
+
+                        IdentityResult result =
+                            await _passwordValidator.ValidateAsync(_userManager, user, model.NewPassword);
+                        if (result.Succeeded)
+                        {
+                            user.PasswordHash = _passwordHasher.HashPassword(user, model.NewPassword);
+                            await _userManager.UpdateAsync(user);
+                            return RedirectToAction("Index");
+                        }
+                        else
+                        {
+                            foreach (var error in result.Errors)
+                            {
+                                ModelState.AddModelError(string.Empty, error.Description);
+                            }
+                        }
                     }
                     else
                     {
-                        foreach (var error in result.Errors)
-                        {
-                            ModelState.AddModelError(string.Empty, error.Description);
-                        }
+                        ModelState.AddModelError(string.Empty, "Пользователь не найден");
                     }
                 }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Пользователь не найден");
-                }
+                return Ok(model);
             }
-            return Ok(model);
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }
