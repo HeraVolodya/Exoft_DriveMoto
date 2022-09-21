@@ -15,12 +15,15 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
     options.User.RequireUniqueEmail = false;
 })
-    .AddEntityFrameworkStores<APIDbContext>();
+    .AddEntityFrameworkStores<APIDbContext>()
+    .AddDefaultTokenProviders(DataProtectorTokenProvider < CustomerUser >> (TokenOptions.DefaultProvider);
 //.AddDefaultTokenProviders();
 // Add services to the container.
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
+    //options.User.RequireUniqueEmail = true; //унікальний імейл
+    //options.User.AllowedUserNameCharacters = ".@abcdefghijklmnopqrstuvwxyz"; //доступні символи
     options.Password.RequireDigit = false;
     options.Password.RequireLowercase = false;
     options.Password.RequireNonAlphanumeric = false;

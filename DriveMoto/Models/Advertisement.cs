@@ -2,19 +2,15 @@
 
 namespace DriveMoto.Models
 {
-    public class CartItem
+    public class Advertisement
     {
         [Required]
         public Guid Id { get; set; }
         [Required]
         public DateTimeOffset DataTime { get; set; } = DateTimeOffset.Now;
         [Required]
-        public string? UserId { get; set; }
-        [Required]
-        public Guid ProductId { get; set; }
-
-        public User? User { get; set; }
-
-        public Product? Product { get; set; }
+        public string? Text { get; set; }
+        
+        public string? ImageURL { get; set; }
     }
 }
