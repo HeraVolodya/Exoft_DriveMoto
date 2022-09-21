@@ -39,9 +39,9 @@ namespace DriveMoto.Controllers
                     var result = await _userManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
-                        // установка куки
+                        // add coockies
                         await _signInManager.SignInAsync(user, false);
-                        await _userManager.GenerateUserTokenAsync(user, "default", "asd");
+                        //await _userManager.GenerateUserTokenAsync(user, "default", "asd");
                         return RedirectToAction("Index", "Home");
                     }
                     else
